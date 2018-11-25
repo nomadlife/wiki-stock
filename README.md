@@ -1,5 +1,3 @@
-![image](screens/home.png)
-
 Testing
 ===========
 
