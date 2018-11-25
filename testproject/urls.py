@@ -4,8 +4,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.http.response import HttpResponse
 from django.views.static import serve as static_serve
 from wiki.compat import include, url
-from . import views
-from . import mysites as sites
+from testproject import views
+from testproject import mysites as sites
 ##
 from .my_views.article import ArticleView
 from django.views.generic.base import View
@@ -46,7 +46,7 @@ urlpatterns += [
     url(r'^_accounts/login/$',accounts.Login.as_view(),name='login'),
     url(r'^_accounts/logout/$',accounts.Logout.as_view(),name='logout'),
     url(r'^_accounts/sign-up/$',accounts.Signup.as_view(),name='signup'),
-    url(r'^stock/$', include('stock.urls')),
+    url(r'^stock/', include('stock.urls')),
     url(r'', include('testproject.myurls')),
 ]
 
