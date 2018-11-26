@@ -6,8 +6,13 @@ from django.shortcuts import render
 
 
 # Create your views here.
-def base(request):
-    return render(request, 'stock/base.html')
+def home(request):
+    return render(request, 'stock/home.html')
+
+def stock_list(request):
+    return render(request, 'stock/stock_list.html')
+
+
 
 def hello_fn(request, name="World"):
     return HttpResponse("Hello {}!".format(name))
