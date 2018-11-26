@@ -4,26 +4,31 @@
 {% block wiki_pagetitle %}home{% endblock %}
 
 {% block wiki_contents %}
+
 <div class="jumbotron">
-      <h1>종목 리스트</h1>
+      <h3>종목 리스트</h3>
 
       <table class="table table-striped">
             <thead>
                   <tr>
                         <th>종목코드</th>
                         <th>종목명</th>
-                        <th>업종</th>
-
+                        <th><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">업종</a></th>
+                        <div id="dropdown4" class="dropdown-menu">
+                              <a href="#" class="dropdown-item">오름차순</a>
+                              <a href="#" class="dropdown-item">내림차순</a>
+                              <a href="#" class="dropdown-item">검색</a>
+                        </div>
                   </tr>
             </thead>
             <tbody>
                   {% for item in file_content %}
                   <tr>
-                        
+
                         <td><a href="#">{{ item.2 }}</a></td>
                         <td>{{ item.1 }}</td>
                         <td>{{ item.3}}</td>
-                        
+
                   </tr>
                   {% endfor %}
             </tbody>

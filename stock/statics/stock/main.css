@@ -2,4 +2,10 @@
 body {
   min-height: 75rem;
   padding-top: 4.5rem;
+
+}
+
+div.jumbotron > table td{
+  line-height: 1;
+  font-size: 0.8rem;
 }

@@ -26,8 +26,10 @@ def stock_list2(request):
     return render(request, 'stock/stock_list.html', context)
 
 def stock_list3(request):
-    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers.csv'))
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
     data = [i.split(',') for i in file.readlines()]
+    for j in data:
+        j[2] = j[2].zfill(6)
     context = {'file_content': data, 'name':'stock_list3'}
     file.close()
     return render(request, 'stock/stock_list.html', context)
