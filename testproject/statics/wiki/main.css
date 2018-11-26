@@ -37,3 +37,7 @@ border-color: #204d74;
 .navbar-header > button > .icon-bar {
     background-color:#fafafa;
 }
+
+ul.breadcrumbs {
+    margin-bottom: 0px;
+}

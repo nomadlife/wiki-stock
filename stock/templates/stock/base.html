@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <!-- <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico"> -->
 
-    <title>{% block wiki_pagetitle %}{% endblock %}{% block wiki_site_title %} -Stock{% endblock %}</title>
+    <title>{% block wiki_pagetitle %}{% endblock %}{% block wiki_site_title %} -주식{% endblock %}</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
 
     <!-- Bootstrap core CSS -->
@@ -25,7 +25,7 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'stock-list' %}"><span class="fa fa-line-chart"></span>Stock</a>
+      <a class="navbar-brand" href="{% url 'stock-home' %}"><span class="fa fa-line-chart"></span>주식</a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
 
             
@@ -37,13 +37,13 @@
           </li> -->
           
           <li class="nav-item">
-                <a class="nav-link" href="{% url 'stock-hello' %}">Prediction</a>
+                <a class="nav-link" href="{% url 'stock-hello' %}">예측</a>
             </li>
           <!-- <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li> -->
           <li class="nav-item">
-                <a class="nav-link" href="{% url 'wiki:root' %}">Wiki</a>
+                <a class="nav-link" href="{% url 'wiki:root' %}">위키</a>
               </li>
         </ul>
         {% endblock %}
@@ -51,7 +51,7 @@
         <div class="navbar-right">
                 {% if user.is_authenticated %}
                 <ul class="nav navbar-nav">
-                  <li class="dropdown">
+                  <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                       <span class="fa fa-user"></span>
                       <span class="badge notification-cnt">0</span>
