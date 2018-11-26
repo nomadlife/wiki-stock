@@ -12,17 +12,18 @@
                   <tr>
                         <th>종목코드</th>
                         <th>종목명</th>
+                        <th>업종</th>
+
                   </tr>
             </thead>
             <tbody>
                   {% for item in file_content %}
                   <tr>
-                        <td>
-                              {{ item.0 }}
-                        </td>
-                        <td>
-                              {{ item.1 }}
-                        </td>
+                        
+                        <td><a href="#">{{ item.2 }}</a></td>
+                        <td>{{ item.1 }}</td>
+                        <td>{{ item.3}}</td>
+                        
                   </tr>
                   {% endfor %}
             </tbody>

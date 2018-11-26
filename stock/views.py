@@ -25,6 +25,13 @@ def stock_list2(request):
     file.close()
     return render(request, 'stock/stock_list.html', context)
 
+def stock_list3(request):
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    context = {'file_content': data, 'name':'stock_list3'}
+    file.close()
+    return render(request, 'stock/stock_list.html', context)
+
 
 def hello_fn(request, name="World"):
     return HttpResponse("Hello {}!".format(name))
