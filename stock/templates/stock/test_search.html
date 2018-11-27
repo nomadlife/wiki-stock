@@ -1,12 +1,22 @@
-<html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Document</title>
-</head>
-<body>
-      Hello!!
-      Your search item is : {{ parameter }}.KS
-</body>
-</html>
+{% extends "stock/base.html" %}
+
+{% block wiki_pagetitle %}resulr{% endblock %}
+
+{% block wiki_contents %}
+<div class="jumbotron">
+<h3>{{ data.1 }} : {{ data.2 }}.KS</h3>
+
+      <table class="table table-striped">
+      
+      회사명 : {{data.1}} <br>
+      종목코드 : {{data.2}} <br>
+      업종 : {{data.3}} <br>
+      주요제품 : {{data.4}} <br>
+      상장일 : {{data.5}} <br>
+      결산월 : {{data.6}} <br>
+      대표자명 : {{data.7}} <br>
+      홈페이지 : {{data.8}} <br>
+      지역 : {{data.9}} <br>
+</div>
+{% endblock %}
+

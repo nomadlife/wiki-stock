@@ -66,7 +66,14 @@ class StockListPage2(View):
 
 
 def test_search(request, ticker_id):
-    context = {'parameter':ticker_id}
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    temp = []
+    for j in data:
+        if j[0] == ticker_id:
+            temp = j
+
+    context = {'ticker_code':temp[2].zfill(6), 'data':temp}
     return render(request, 'stock/test_search.html', context )
 
 

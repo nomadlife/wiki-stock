@@ -6,13 +6,16 @@ body {
 }
 
 div.jumbotron {
-  padding: 1rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 div.jumbotron > table td{
   line-height: 1;
   font-size: 0.8rem;
 }
+body> .container {
+  padding: 0px 0px;
 
+}
 .dropdown > a{
   position: relative;
 }
