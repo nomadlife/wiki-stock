@@ -3,11 +3,11 @@
 {% block wiki_pagetitle %}resulr{% endblock %}
 
 {% block wiki_contents %}
-<div class="jumbotron">
-<h3>{{ data.1 }} : {{ data.2 }}.KS</h3>
 
-      <table class="table table-striped">
-      
+<div class="jumbotron">
+      <h3>{{ data.1 }} : {{ data.2 }}.KS</h3>
+
+
       회사명 : {{data.1}} <br>
       종목코드 : {{data.2}} <br>
       업종 : {{data.3}} <br>
@@ -17,6 +17,38 @@
       대표자명 : {{data.7}} <br>
       홈페이지 : {{data.8}} <br>
       지역 : {{data.9}} <br>
+
+
+      {{ history_data}}
+
+<table class="table table-striped">
+      <thead>
+            <tr>
+                  <th>Date</th>
+                  <th>High</th>
+                  <th>Low</th>
+                  <th>Open</th>
+                  <th>Close</th>
+                  <th>Volume</th>
+                  <th>Close</th>
+            </tr>
+      </thead>
+      <tbody>
+                  {% for b in history_data.itertuples reversed %}
+            <tr>
+                  <td>{{ b.0 }}</td>
+                  <td>{{ b.1 }}</td>
+                  <td>{{ b.2 }}</td>
+                  <td>{{ b.3 }}</td>
+                  <td>{{ b.4 }}</td>
+                  <td>{{ b.5 }}</td>
+                  <td>{{ b.6 }}</td>
+            </tr>
+            {% endfor %}
+      </tbody>
+
+
+</table>
+
 </div>
 {% endblock %}
-
