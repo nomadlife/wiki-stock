@@ -19,3 +19,6 @@ body> .container {
 .dropdown > a{
   position: relative;
 }
+div.row > img.col {
+  min-width: 400px;
+}

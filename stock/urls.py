@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^list5/$', views.StockListPage.as_view()),
     url(r'^list6/$', views.StockListPage2.as_view()),
 
-    url(r'^search/(?P<ticker_id>.+?)/', views.test_search, name='ticker-search'),
+    url(r'^search/(?P<ticker_id>.+?)/', views.test_search),
+    url(r'^search2/(?P<ticker_id>.+?)/', views.stock_detail, name='ticker-search'),
 
 ]

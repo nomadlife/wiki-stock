@@ -1,10 +1,10 @@
 {% extends "stock/base.html" %}
 
-{% block wiki_pagetitle %}resulr{% endblock %}
+{% block wiki_pagetitle %}result{% endblock %}
 
 {% block wiki_contents %}
 
-<div class="jumbotron">
+<div class="">
       <h3>{{ data.1 }} : {{ data.2 }}.KS</h3>
 
 
@@ -19,15 +19,15 @@
       지역 : {{data.9}} <br>
 
 
-<table class="table table-striped">
+<table class="table">
       <thead>
             <tr>
-                  <th>Date</th>
-                  <th>High</th>
-                  <th>Low</th>
-                  <th>Open</th>
-                  <th>Close</th>
-                  <th>Volume</th>
+                  <th>날짜</th>
+                  <th>고가</th>
+                  <th>저가</th>
+                  <th>시가</th>
+                  <th>종가</th>
+                  <th>거래량</th>
                   <th>Close</th>
             </tr>
       </thead>

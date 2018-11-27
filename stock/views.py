@@ -12,6 +12,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 import pandas as pd
 import pandas_datareader.data as web
 from datetime import datetime,date
+import matplotlib.pyplot as plt
 
 # Create your views here.
 def home(request):
@@ -83,6 +84,30 @@ def test_search(request, ticker_id):
     # history_data_new = history_data.sort_index(inplace=True, ascending=False)
     context = {'ticker_code':info[2].zfill(6), 'data':info, 'history_data':history_data}
     return render(request, 'stock/test_search.html', context )
+
+def stock_detail(request, ticker_id):
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    info = []
+    for j in data:
+        if j[0] == ticker_id:
+            info = j
+    ticker = info[2].zfill(6)+'.KS'
+    today = date.today()
+    end = datetime(today.year, today.month, today.day)
+    start = datetime(today.year-1, today.month, today.day)
+    history = web.DataReader(ticker,'yahoo',start, end)
+    fig = plt.figure()
+    history['Close'].plot(figsize=(10,6), grid=True, label='Close')
+    fig.savefig(os.path.join(base.BASE_DIR, 'stock/statics/stock/chart/'+ticker+'.png'))
+    fig = plt.figure()
+    ax1 = plt.axes()
+    ax1.xaxis.set_visible(False)
+    ax1.set_yticklabels([])
+    history['Close'].plot(figsize=(2,1), grid=False, label='Close')
+    fig.savefig(os.path.join(base.BASE_DIR, 'stock/statics/stock/chart/'+ticker+'.m.png'))
+    context = {'ticker_code':info[2].zfill(6), 'data':info , 'ticker':ticker}
+    return render(request, 'stock/stock_detail.html', context )
 
 
 

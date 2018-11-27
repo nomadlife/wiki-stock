@@ -5,71 +5,80 @@
 
 {% block wiki_contents %}
 
-<div class="jumbotron">
+<div class="">
       <h3>종목 리스트</h3>
 
-      <table class="table table-striped">
+      <table class="table">
             <thead>
                   <tr>
                         <th>
                               <div class="dropdown">
-                                    <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">종목코드</a>
+                                    <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown"
+                                          aria-expanded="false" aria-haspopup="true">종목코드</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a href="#" class="dropdown-item">오름차순</a>
                                           <a href="#" class="dropdown-item">내림차순</a>
-                                          <form class="navbar-form navbar-right" id="wiki-search-form" method="GET" action="{% url 'wiki:search' article_id=article.id path=urlpath.path %}"
-                                          >
-                                          <div class="input-group">
-                                                <input type="search" class="form-control search-query" name="q" placeholder="검색" />
-                                                <span class="input-group-btn">
-                                                <button class="btn btn-default" type="submit">
-                                                <span class="fa fa-search"></span>
-                                                </button>
-                                                </span>
-                                          </div><!-- /input-group -->
+                                          <form class="navbar-form navbar-right" id="wiki-search-form" method="GET"
+                                                action="{% url 'wiki:search' article_id=article.id path=urlpath.path %}">
+                                                <div class="input-group">
+                                                      <input type="search" class="form-control search-query" name="q"
+                                                            placeholder="검색" />
+                                                      <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="submit">
+                                                                  <span class="fa fa-search"></span>
+                                                            </button>
+                                                      </span>
+                                                </div><!-- /input-group -->
                                           </form>
                                     </div>
                               </div>
                         </th>
                         <th>
                               <div class="dropdown">
-                                    <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">종목명</a>
+                                    <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown"
+                                          aria-expanded="false" aria-haspopup="true">종목명</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a href="#" class="dropdown-item">오름차순</a>
                                           <a href="#" class="dropdown-item">내림차순</a>
-                                          <form class="navbar-form navbar-right" id="wiki-search-form" method="GET" action="{% url 'wiki:search' article_id=article.id path=urlpath.path %}"
-                                          >
-                                          <div class="input-group">
-                                                <input type="search" class="form-control search-query" name="q" placeholder="검색" />
-                                                <span class="input-group-btn">
-                                                <button class="btn btn-default" type="submit">
-                                                <span class="fa fa-search"></span>
-                                                </button>
-                                                </span>
-                                          </div><!-- /input-group -->
+                                          <form class="navbar-form navbar-right" id="wiki-search-form" method="GET"
+                                                action="{% url 'wiki:search' article_id=article.id path=urlpath.path %}">
+                                                <div class="input-group">
+                                                      <input type="search" class="form-control search-query" name="q"
+                                                            placeholder="검색" />
+                                                      <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="submit">
+                                                                  <span class="fa fa-search"></span>
+                                                            </button>
+                                                      </span>
+                                                </div><!-- /input-group -->
                                           </form>
                                     </div>
                               </div>
                         </th>
                         <th>
                               <div class="dropdown">
-                                    <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">업종</a>
+                                    <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown"
+                                          aria-expanded="false" aria-haspopup="true">업종</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a href="#" class="dropdown-item">오름차순</a>
                                           <a href="#" class="dropdown-item">내림차순</a>
-                                          <form class="navbar-form navbar-right" id="wiki-search-form" method="GET" action="{% url 'wiki:search' article_id=article.id path=urlpath.path %}"
-                                          >
-                                          <div class="input-group">
-                                                <input type="search" class="form-control search-query" name="q" placeholder="검색" />
-                                                <span class="input-group-btn">
-                                                <button class="btn btn-default" type="submit">
-                                                <span class="fa fa-search"></span>
-                                                </button>
-                                                </span>
-                                          </div><!-- /input-group -->
+                                          <form class="navbar-form navbar-right" id="wiki-search-form" method="GET"
+                                                action="{% url 'wiki:search' article_id=article.id path=urlpath.path %}">
+                                                <div class="input-group">
+                                                      <input type="search" class="form-control search-query" name="q"
+                                                            placeholder="검색" />
+                                                      <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="submit">
+                                                                  <span class="fa fa-search"></span>
+                                                            </button>
+                                                      </span>
+                                                </div><!-- /input-group -->
                                           </form>
                                     </div>
                               </div>
+                        </th>
+                        <th>
+                              1년그래프
                         </th>
                   </tr>
             </thead>
@@ -80,41 +89,48 @@
                         <td><a href="{% url 'ticker-search' ticker_id=item.0 %}">{{ item.2 }}</a></td>
                         <td>{{ item.1 }}</td>
                         <td>{{ item.3}}</td>
-
+                        <td>
+                              <div class="thumbnail">
+                                    <img style="width: 3rem;" src="/static/stock/chart/{{ item.2 }}.KS.m.png" alt="-">
+                              </div>
+                        </td>
                   </tr>
                   {% endfor %}
             </tbody>
       </table>
-      
+
       <div class="pagination">
             <span class="step-links">
                   {% if file_content.has_previous %}
-                        <a href="?page=1" class="btn btn-primary btn-sm mb-4"><span class="fa fa-fast-backward"></span></a>
-                        <a href="?page={{ file_content.previous_page_number }}" class="btn btn-primary btn-sm mb-4"><span class="fa fa-step-backward"></span></a>
+                  <a href="?page=1" class="btn btn-primary btn-sm mb-4"><span class="fa fa-fast-backward"></span></a>
+                  <a href="?page={{ file_content.previous_page_number }}" class="btn btn-primary btn-sm mb-4"><span
+                              class="fa fa-step-backward"></span></a>
                   {% else%}
-                        <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-fast-backward"></span></a>
-                        <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-step-backward"></span></a>
+                  <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-fast-backward"></span></a>
+                  <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-step-backward"></span></a>
                   {% endif %}
-            
+
                   {% for num in file_content.paginator.page_range %}
                   {% if file_content.number == num %}
-                        <a href="?page={{ num }}" class="btn btn-primary btn-sm mb-4">{{ num }}</a>
-                  {% elif num > file_content.number|add:'-8' and num < file_content.number|add:'8' %}
-                        <a href="?page={{ num }}" class="btn btn-outline-primary btn-sm mb-4">{{ num }}</a>
-                  {% endif %}
-                  {% endfor %}
-            
-                  {% if file_content.has_next %}
-                        <a href="?page={{ file_content.next_page_number }}" class="btn btn-primary btn-sm mb-4"><span class="fa fa-step-forward"></a>
-                        <a href="?page={{ file_content.paginator.num_pages }}" class="btn btn-primary btn-sm mb-4"><span class="fa fa-fast-forward"></a>
-                  {% else%}
+                  <a href="?page={{ num }}" class="btn btn-primary btn-sm mb-4">{{ num }}</a>
+                  {% elif num > file_content.number|add:'-8' and num < file_content.number|add:'8' %} <a href="?page={{ num }}"
+                        class="btn btn-outline-primary btn-sm mb-4">{{ num }}</a>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if file_content.has_next %}
+                        <a href="?page={{ file_content.next_page_number }}" class="btn btn-primary btn-sm mb-4"><span
+                                    class="fa fa-step-forward"></a>
+                        <a href="?page={{ file_content.paginator.num_pages }}" class="btn btn-primary btn-sm mb-4"><span
+                                    class="fa fa-fast-forward"></a>
+                        {% else%}
                         <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-step-forward"></a>
                         <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-fast-forward"></a>
-                  {% endif %}
+                        {% endif %}
             </span>
       </div>
 
-    
+
 </div>
 
 
