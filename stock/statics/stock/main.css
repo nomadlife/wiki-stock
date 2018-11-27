@@ -5,7 +5,14 @@ body {
 
 }
 
+div.jumbotron {
+  padding: 1rem 1rem;
+}
 div.jumbotron > table td{
   line-height: 1;
   font-size: 0.8rem;
+}
+
+.dropdown > a{
+  position: relative;
 }

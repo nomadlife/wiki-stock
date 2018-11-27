@@ -39,9 +39,13 @@
                                           <a href="#" class="dropdown-item">내림차순</a>
                                           <form class="navbar-form navbar-right" id="wiki-search-form" method="GET" action="{% url 'wiki:search' article_id=article.id path=urlpath.path %}"
                                           >
-                                          <div class="input-group">
-                                                <input type="search" class="form-control search-query" name="q" placeholder="필터" />
-                                                <span class="input-group-btn">
+                  {% for item in file_content %}
+                                          <
+                  {% for item in file_content %}up">
+                                           
+                  {% for item in file_content %}arch" class="form-control search-query" name="q" placeholder="필터" />
+                                           
+                  {% for item in file_content %}put-group-btn">
                                                 <button class="btn btn-default" type="submit">
                                                 <span class="fa fa-search"></span>
                                                 </button>
@@ -85,6 +89,30 @@
                   {% endfor %}
             </tbody>
       </table>
+                              <div class="pagination">
+                                    <span class="step-links">
+                                          {% if file_content.has_previous %}
+                                                <a href="?page=1" class="btn btn-outline-info mb-4">First</a>
+                                                <a href="?page={{ file_content.previous_page_number }}" class="btn btn-outline-info mb-4">Previous</a>
+                                          {% endif %}
+                                    
+                                          {% for num in file_content.paginator.page_range %}
+                                          {% if file_content.number == num %}
+                                                <a href="?page={{ num }}" class="btn btn-info mb-4">{{ num }}</a>
+                                          {% elif num > file_content.number|add:'-5' and num < file_content.number|add:'5' %}
+                                                <a href="?page={{ num }}" class="btn btn-outline-info mb-4">{{ num }}</a>
+                                          {% endif %}
+                                          {% endfor %}
+                                    
+                                          {% if file_content.has_next %}
+                                                <a href="?page={{ file_content.next_page_number }}" class="btn btn-outline-info mb-4">Next</a>
+                                                <a href="?page={{ file_content.paginator.num_pages }}" class="btn btn-outline-info mb-4">Last</a>
+                                          {% endif %}
+                                    </span>
+                                    </div>
+
+    
+        {% endif %}
 
 </div>
 

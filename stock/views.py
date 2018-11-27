@@ -6,7 +6,8 @@ import os
 from django.http import HttpResponse
 from django.views.generic.base import View
 from django.shortcuts import render
-
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 # Create your views here.
 def home(request):
@@ -33,6 +34,41 @@ def stock_list3(request):
     context = {'file_content': data, 'name':'stock_list3'}
     file.close()
     return render(request, 'stock/stock_list.html', context)
+
+def stock_list_page(request):
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    for j in data:
+        j[2] = j[2].zfill(6)
+    paginator = Paginator(data, 40)
+    page = request.GET.get('page')
+    data_paged = paginator.get_page(page)
+    context = {'file_content': data_paged, 'name':'stock_list3_page' }
+    file.close()
+    return render(request, 'stock/stock_list_page.html', context)
+
+
+class StockListPage(View):
+    #hold
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    for j in data:
+        j[2] = j[2].zfill(6)
+    template_name = 'stock/stock_list_page_cbv.html'
+    context_object_name = {'file_content': data}
+    paginate_by = 5
+
+class StockListPage2(View):
+    #hold
+    template_name = 'stock/stock_list_page_cbv.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+
+def test_search(request, ticker_id):
+    context = {'parameter':ticker_id}
+    return render(request, 'stock/test_search.html', context )
+
 
 
 def hello_fn(request, name="World"):

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 from django.urls import reverse_lazy
+
 ##
 # from wiki.conf import settings
 
@@ -40,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sites.apps.SitesConfig',
     'django.contrib.messages.apps.MessagesConfig',
     ##
-    # 'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
 
-    'django.contrib.staticfiles.apps.StaticFilesConfig',
+    # 'django.contrib.staticfiles.apps.StaticFilesConfig',
     ##
     # 'django.contrib.staticfiles.finders.FileSystemFinder',
     # 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -64,7 +65,7 @@ INSTALLED_APPS = [
     'wiki.plugins.globalhistory.apps.GlobalHistoryConfig',
     'mptt',
     "testproject.apps.MyWikiConfig",
-    "stock",
+    "stock.apps.StockConfig",
 ]
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
@@ -169,7 +170,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-# STATIC_FINDERS= STATICFILES_FINDERS
+STATIC_FINDERS= STATICFILES_FINDERS
 
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/media/'
