@@ -15,6 +15,9 @@ from datetime import datetime,date
 import matplotlib.pyplot as plt
 
 # Create your views here.
+def test(request):
+    return render(request, 'stock/test.html')
+
 def home(request):
     return render(request, 'stock/home.html')
 
@@ -45,12 +48,12 @@ def stock_list_page(request):
     data = [i.split(',') for i in file.readlines()]
     for j in data:
         j[2] = j[2].zfill(6)
-    paginator = Paginator(data, 40)
+    paginator = Paginator(data, 50)
     page = request.GET.get('page')
     data_paged = paginator.get_page(page)
     context = {'file_content': data_paged, 'name':'stock_list3_page' }
     file.close()
-    return render(request, 'stock/stock_list_page.html', context)
+    return render(request, 'stock/stock_list_page2.html', context)
 
 
 class StockListPage(View):

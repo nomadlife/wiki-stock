@@ -8,9 +8,15 @@ body {
 div.jumbotron {
   padding: 0.5rem 0.5rem;
 }
-div.jumbotron > table td{
+table.table th{
   line-height: 1;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  padding: 3px;
+}
+table.table td{
+  line-height: 1;
+  font-size: 1rem;
+  padding: 3px;
 }
 body> .container {
   padding: 0px 0px;
