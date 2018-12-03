@@ -1,0 +1,5 @@
+(71, '214390.KS', 'plotted.', '경보제약')
+(72, '210980.KS', 'plotted.', 'SK디앤디')
+(73, '138250.KS', 'plotted.', '엔에스쇼핑')
+(74, '145210.KS', 'failed.', ValueError('Dataframe has less than 2 non-NaN rows.',), '세화아이엠씨')
+(75, '213500.KS', 'plotted.', '한솔제지')

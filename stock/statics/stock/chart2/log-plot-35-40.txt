@@ -1,0 +1,5 @@
+(36, '267250.KS', 'plotted.', '현대중공업지주')
+(37, '264900.KS', 'plotted.', '크라운제과')
+(38, '145720.KS', 'failed.', FileNotFoundError(2, 'No such file or directory'), '덴티움')
+(39, '111110.KS', 'plotted.', '호전실업')
+(40, '143210.KS', 'plotted.', '핸즈코퍼레이션')

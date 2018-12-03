@@ -53,7 +53,7 @@
                                     </div>
                               </div>
                         </th>
-                        
+
                         <th>
                               현재
                         </th>
@@ -72,9 +72,9 @@
                   {% for item in file_content %}
                   <tr>
 
-                        <td><a href="{% url 'ticker-search' ticker_id=item.0 %}">{{ item.2 }}</a></td>
-                        <td>{{ item.1 }}</td>
-                        
+                        <td>{{ item.2 }}</td>
+                        <td><a href="{% url 'ticker-detail' ticker_id=item.0 %}">{{ item.1 }}</a></td>
+
                         <td>
                               <div class="thumbnail">
                                     <img style="width: 3rem;" src="/static/stock/chart/{{ item.2 }}.KS.m.png" alt="-">
@@ -87,8 +87,7 @@
                   {% endfor %}
             </tbody>
       </table>
-
-      <div class="pagination">
+      <div class="pagination text-xs-center">
             <span class="step-links">
                   {% if file_content.has_previous %}
                   <a href="?page=1" class="btn btn-primary btn-sm mb-4"><span class="fa fa-fast-backward"></span></a>
@@ -104,18 +103,18 @@
                   <a href="?page={{ num }}" class="btn btn-primary btn-sm mb-4">{{ num }}</a>
                   {% elif num > file_content.number|add:'-7' and num < file_content.number|add:'7' %} <a href="?page={{ num }}"
                         class="btn btn-outline-primary btn-sm mb-4">{{ num }}</a>
-                        {% endif %}
-                        {% endfor %}
+                  {% endif %}
+                  {% endfor %}
 
-                        {% if file_content.has_next %}
-                        <a href="?page={{ file_content.next_page_number }}" class="btn btn-primary btn-sm mb-4"><span
-                                    class="fa fa-step-forward"></a>
-                        <a href="?page={{ file_content.paginator.num_pages }}" class="btn btn-primary btn-sm mb-4"><span
-                                    class="fa fa-fast-forward"></a>
-                        {% else%}
-                        <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-step-forward"></a>
-                        <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-fast-forward"></a>
-                        {% endif %}
+                  {% if file_content.has_next %}
+                  <a href="?page={{ file_content.next_page_number }}" class="btn btn-primary btn-sm mb-4"><span
+                              class="fa fa-step-forward"></a>
+                  <a href="?page={{ file_content.paginator.num_pages }}" class="btn btn-primary btn-sm mb-4"><span
+                              class="fa fa-fast-forward"></a>
+                  {% else%}
+                  <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-step-forward"></a>
+                  <a href="#" class="btn btn-primary btn-sm mb-4 disabled"><span class="fa fa-fast-forward"></a>
+                  {% endif %}
             </span>
       </div>
 

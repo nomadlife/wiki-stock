@@ -51,10 +51,21 @@ def stock_list_page(request):
     paginator = Paginator(data, 50)
     page = request.GET.get('page')
     data_paged = paginator.get_page(page)
-    context = {'file_content': data_paged, 'name':'stock_list3_page' }
+    context = {'file_content': data_paged, 'name':'stock_list4_page' }
     file.close()
     return render(request, 'stock/stock_list_page2.html', context)
 
+def stock_list_page2(request):
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    for j in data:
+        j[2] = j[2].zfill(6)
+    paginator = Paginator(data, 50)
+    page = request.GET.get('page')
+    data_paged = paginator.get_page(page)
+    context = {'file_content': data_paged, 'name':'stock_list5_page' }
+    file.close()
+    return render(request, 'stock/stock_list_page3.html', context)
 
 class StockListPage(View):
     #hold
@@ -112,6 +123,17 @@ def stock_detail(request, ticker_id):
     context = {'ticker_code':info[2].zfill(6), 'data':info , 'ticker':ticker}
     return render(request, 'stock/stock_detail.html', context )
 
+def stock_detail2(request, ticker_id):
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    info = []
+    for j in data:
+        if j[0] == ticker_id:
+            info = j
+    ticker = info[2].zfill(6)+'.KS'
+    
+    context = {'ticker_code':info[2].zfill(6), 'data':info , 'ticker':ticker}
+    return render(request, 'stock/stock_detail.html', context )
 
 
 def hello_fn(request, name="World"):
