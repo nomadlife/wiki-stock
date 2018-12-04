@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^list4/$', views.stock_list_page),
     url(r'^list5/$', views.stock_list_page2, name='stock-list'),
 
+    url(r'^search/$', views.stock_search_list, name='stock-search'),
+
     url(r'^list5/$', views.StockListPage.as_view()),
     url(r'^list6/$', views.StockListPage2.as_view()),
 

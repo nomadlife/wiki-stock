@@ -5,7 +5,7 @@ from testproject.settings import base
 import os
 from django.http import HttpResponse
 from django.views.generic.base import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.staticfiles.templatetags.staticfiles import static
 
@@ -66,6 +66,27 @@ def stock_list_page2(request):
     context = {'file_content': data_paged, 'name':'stock_list5_page' }
     file.close()
     return render(request, 'stock/stock_list_page3.html', context)
+
+def stock_search_list(request):
+    if request.GET and request.GET['q'] != '':
+        keyword = request.GET['q'].upper()
+        file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+        data = [i.split(',') for i in file.readlines()]
+        for j in data:
+            j[2] = j[2].zfill(6)
+        data2 = [i for i in data if keyword in i[2] or keyword in i[1]]
+
+        paginator = Paginator(data2, 50)
+        page = request.GET.get('page')
+        data_paged = paginator.get_page(page)
+
+        context = {'file_content': data_paged , 'keyword':keyword}
+        return render(request, 'stock/stock_list_page3.html', context)
+    else:
+        return redirect('stock-home')
+
+
+## CBV 
 
 class StockListPage(View):
     #hold
