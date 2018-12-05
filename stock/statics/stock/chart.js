@@ -26,44 +26,30 @@ var datatemp = "{{ customers }}" * 134
                   data: {
                         labels: labels,
                         datasets: [{
-                              label: 'random number',
+                              label: '종가',
                               data: defaultData,
                               fill: false,
                               lineTension: 0,
                               borderColor: 'rgba(255,99,132,1)',
+                              borderWidth: 1,
                               // showLine: false,
+                              pointRadius: 1,
+                              // pointBackgroundColor: [],
+                              // pointBorderColor: [],
                         }]
                   },
                   options: {
                         animation: false,
                         responsive: true,
                         legend: {
-                              position: 'bottom',
+                              position: 'top',
                         },
                         hover: {
                               mode: 'label'
                         },
-                        scales: {
-                              xAxes: [{
-                                    display: true,
-                                    scaleLabel: {
-                                          display: true,
-                                          labelString: 'Alphabet'
-                                    }
-                              }],
-                              yAxes: [{
-                                    display: true,
-                                    ticks: {
-                                          beginAtZero: true,
-                                          steps: 10,
-                                          stepValue: 5,
-                                          max: 500
-                                    }
-                              }]
-                        },
                         title: {
                               display: true,
-                              text: 'sample chartd'
+                              text: 'sample chart, 008500.KS 일정실업'
                         },
                   }
             })

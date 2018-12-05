@@ -174,14 +174,16 @@ class ChartData(APIView):
     def get(self, request, format=None):
         labels = []
         values = []
-        for i in string.ascii_uppercase:
-            labels.append(i)
-            values.append(random.randint(50,300))
-        data = {
+        file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/data/test-csv-close.csv'))
+        data = [i.split(',') for i in file.readlines()]
+        for i in data:
+            labels.append(i[0])
+            values.append(i[1])
+        content = {
         "labels":labels,
         "default":values,
         }
-        return Response(data)
+        return Response(content)
 
 
 def hello_fn(request, name="World"):
