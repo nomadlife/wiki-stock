@@ -40,8 +40,10 @@ var datatemp = "{{ customers }}" * 134
                   },
                   options: {
                         animation: false,
-                        responsive: true,
+                        responsive: false,
+                        // maintainAspectRatio: true,
                         legend: {
+                              display: false,
                               position: 'top',
                         },
                         hover: {
