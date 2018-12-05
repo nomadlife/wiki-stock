@@ -10,9 +10,9 @@
 
 {% block wiki_contents %}
 
-<div class="">
+<div class="container">
       <div class="row">
-            <h3 class="m-1">{{ data.1 }} : {{ data.2 }} </h3>
+            <h3 class="p-2"> {{ data.1 }} : {{ data.2 }} </h3>
             <div class="col-6 dropdown">
                   <a class="dropdown-toggle btn btn-link" data-toggle="dropdown">기업정보</a>
                   <div class="dropdown-menu col-sm " aria-expanded="false">
@@ -28,7 +28,7 @@
             </div>
 
       </div>
-
+      
       <canvas id="myChart" width="1000" height="400 px"></canvas>
 
 
@@ -42,7 +42,7 @@
                               <div class='input-group date' id='startinterval'>
                                     <input id="start" type='text' class="form-control" placeholder="시작" />
                                     <span class="input-group-addon">
-                                          <span class="glyphicon glyphicon-calendar"></span>
+                                          <span class="fa fa-calendar"></span>
                                     </span>
                               </div>
                         </div>
@@ -50,7 +50,7 @@
                               <div class='input-group date' id='endinterval'>
                                     <input id="end" type='text' class="form-control" placeholder="종료" />
                                     <span class="input-group-addon">
-                                          <span class="glyphicon glyphicon-calendar"></span>
+                                          <span class="fa fa-calendar"></span>
                                     </span>
                               </div>
                         </div>
