@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'mptt',
     "testproject.apps.MyWikiConfig",
     "stock.apps.StockConfig",
+    "rest_framework",
 ]
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'

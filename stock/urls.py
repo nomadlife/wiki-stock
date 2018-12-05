@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^detail2/(?P<ticker_id>.+?)/', views.stock_detail),
     url(r'^detail3/(?P<ticker_id>.+?)/', views.stock_detail2, name='ticker-detail'),
 
+    url(r'^api/chart/data/$', views.ChartData.as_view()),
+
 ]

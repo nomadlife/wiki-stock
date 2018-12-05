@@ -14,6 +14,9 @@ import pandas_datareader.data as web
 from datetime import datetime,date
 import matplotlib.pyplot as plt
 
+from django.shortcuts import render
+from django.views.generic import View
+
 # Create your views here.
 def test(request):
     return render(request, 'stock/test.html')
@@ -153,8 +156,32 @@ def stock_detail2(request, ticker_id):
             info = j
     ticker = info[2].zfill(6)+'.KS'
     
-    context = {'ticker_code':info[2].zfill(6), 'data':info , 'ticker':ticker}
+    context = {'ticker_code':info[2].zfill(6), 'data':info , 'ticker':ticker, "customers":100, "test":"test"}
     return render(request, 'stock/stock_detail.html', context )
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+import random
+import string
+
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        labels = []
+        values = []
+        for i in string.ascii_uppercase:
+            labels.append(i)
+            values.append(random.randint(50,300))
+        data = {
+        "labels":labels,
+        "default":values,
+        }
+        return Response(data)
 
 
 def hello_fn(request, name="World"):
