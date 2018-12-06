@@ -2,7 +2,66 @@
 {% load static %}
 
 {% block jquery %}
-<script src="{% static 'stock/chart.js' %}"></script>
+<script>
+      var ticker = "{{ticker}}"
+      var customers = '{{customers}}'
+      var defaultData = []
+      var labels = []
+
+      $.ajax({
+            type: "GET",
+            url: "{% url 'api-chart-data' ticker=ticker %}",
+            success: function (data) {
+                  console.log("success")
+                  labels = data.labels
+                  defaultData = data.values
+                  setChart()
+            },
+            error: function (error_data) {
+                  console.log("error")
+                  console.log('url:', url)
+                  console.log(error_data)
+            }
+      });
+
+      function setChart() {
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                        labels: labels,
+                        datasets: [{
+                              label: '종가',
+                              data: defaultData,
+                              fill: false,
+                              lineTension: 0,
+                              borderColor: 'rgba(255,99,132,1)',
+                              borderWidth: 1,
+                              // showLine: false,
+                              pointRadius: 0,
+                              // pointBackgroundColor: [],
+                              // pointBorderColor: [],
+                        }]
+                  },
+                  options: {
+                        animation: false,
+                        responsive: false,
+                        // maintainAspectRatio: true,
+                        legend: {
+                              display: false,
+                              position: 'top',
+                        },
+                        hover: {
+                              mode: 'label'
+                        },
+                        title: {
+                              display: true,
+                              text: "{{ data.1 }} : {{ ticker }}"
+                        },
+                  }
+            })
+      }
+</script>
 {% endblock %}
 
 {% block wiki_pagetitle %}result{% endblock %}
@@ -12,7 +71,7 @@
 
 <div class="container">
       <div class="row">
-            <h3 class="p-2"> {{ data.1 }} : {{ data.2 }} </h3>
+            <h3 class="p-2"> {{ data.1 }} : {{ ticker }} </h3>
             <div class="col-6 dropdown">
                   <a class="dropdown-toggle btn btn-link" data-toggle="dropdown">기업정보</a>
                   <div class="dropdown-menu col-sm " aria-expanded="false">
@@ -28,7 +87,7 @@
             </div>
 
       </div>
-      
+
       <canvas id="myChart" width="1000" height="400 px"></canvas>
 
 

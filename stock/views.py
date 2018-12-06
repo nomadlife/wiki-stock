@@ -148,6 +148,7 @@ def stock_detail(request, ticker_id):
     return render(request, 'stock/stock_detail.html', context )
 
 def stock_detail2(request, ticker_id):
+    print(ticker_id)
     file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
     data = [i.split(',') for i in file.readlines()]
     info = []
@@ -156,7 +157,19 @@ def stock_detail2(request, ticker_id):
             info = j
     ticker = info[2].zfill(6)+'.KS'
     
-    context = {'ticker_code':info[2].zfill(6), 'data':info , 'ticker':ticker, "customers":100, "test":"test"}
+    context = {'ticker_code':info[2].zfill(6), 'data':info , 'ticker':ticker, "customers":100}
+    return render(request, 'stock/stock_detail.html', context )
+
+def stock_detail3(request, ticker_id):
+    file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/alltickers_2018.csv'))
+    data = [i.split(',') for i in file.readlines()]
+    info = []
+    for j in data:
+        if j[0] == ticker_id:
+            info = j
+    ticker = info[2].zfill(6)
+    
+    context = {'data':info , 'ticker':ticker, "customers":100}
     return render(request, 'stock/stock_detail.html', context )
 
 
@@ -164,24 +177,21 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from django.contrib.auth.models import User
-import random
-import string
+# import random
+# import string
 
 class ChartData(APIView):
     authentication_classes = []
     permission_classes = []
 
-    def get(self, request, format=None):
-        labels = []
-        values = []
-        file = open(os.path.join(base.BASE_DIR, 'stock/statics/stock/data/test-csv-close.csv'))
-        data = [i.split(',') for i in file.readlines()]
-        for i in data:
-            labels.append(i[0])
-            values.append(i[1])
+    def get(self, request, format=None,  *args, **kwargs):
+        ticker = self.kwargs['ticker']
+        df = pd.read_pickle(os.path.join(base.BASE_DIR, 'stock/statics/stock/data/{}'.format(ticker)))
+        labels = df.index.strftime('%Y-%m-%d').tolist()
+        values = df.Close.tolist()
         content = {
         "labels":labels,
-        "default":values,
+        "values":values,
         }
         return Response(content)
 
