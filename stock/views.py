@@ -188,10 +188,27 @@ class ChartData(APIView):
         ticker = self.kwargs['ticker']
         df = pd.read_pickle(os.path.join(base.BASE_DIR, 'stock/statics/stock/data/{}'.format(ticker)))
         labels = df.index.strftime('%Y-%m-%d').tolist()
-        values = df.Close.tolist()
+        value1 = df.Close.tolist()
         content = {
         "labels":labels,
-        "values":values,
+        "value1":value1,
+        }
+        return Response(content)
+
+class ChartData2(APIView):
+    authentication_classes = []
+    permission_classes = []
+    def get(self, request, format=None,  *args, **kwargs):
+        ticker = self.kwargs['ticker']
+        df = pd.read_pickle(os.path.join(base.BASE_DIR, 'stock/statics/stock/data/{}'.format(ticker)))
+        labels = df.index.strftime('%Y-%m-%d').tolist()
+        value1 = df.y.tolist()
+        value2 = df.yhat.tolist()
+        print('length:',len(value2))
+        content = {
+        "labels":labels,
+        "value1":value1,
+        "value2":value2,
         }
         return Response(content)
 

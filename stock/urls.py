@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^detail3/(?P<ticker_id>.+?)/', views.stock_detail2),
     url(r'^detail4/(?P<ticker_id>.+?)/', views.stock_detail3, name='ticker-detail'),
 
-    url(r'^api/chart/data/(?P<ticker>.+?)/', views.ChartData.as_view(), name='api-chart-data'),
+    url(r'^api/chart/data/(?P<ticker>.+?)/', views.ChartData.as_view()),
+    url(r'^api/chart/data2/(?P<ticker>.+?)/', views.ChartData2.as_view(), name='api-chart-data'),
 
 ]
